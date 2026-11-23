@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="احجز موعد غسل سيارتك أو اطلب عضوية ROYAL لدى غسل وحمامكو الملكي في كركوك عبر واتساب." />
+  <title>حجوزات وعضويات الملكي | ROYAL Car Wash</title>
+  <style>
+    :root { --bg:#0b0b0c; --panel:#171718; --panel2:#202021; --gold:#f5ca56; --gold2:#d6a62c; --text:#f9f6ec; --muted:#bbb9b3; --border:#3b3629; --ok:#bde8bd; --danger:#ffc0bd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; min-height:100vh; font-family:"Cairo","Tajawal",system-ui,-apple-system,"Segoe UI",Arial,sans-serif; color:var(--text); background:radial-gradient(ellipse 700px 420px at 80% -80px,#3c3114 0%,transparent 70%),var(--bg); }
+    button,input,select,textarea { font:inherit; }
+    a { color:inherit; text-decoration:none; }
+    .shell { width:min(1140px,92vw); margin:0 auto; }
+    header { border-bottom:1px solid #282722; background:rgba(11,11,12,.92); backdrop-filter:blur(12px); position:sticky; top:0; z-index:20; }
+    .header-row { display:flex; align-items:center; justify-content:space-between; min-height:79px; gap:16px; }
+    .brand { display:flex; align-items:center; gap:11px; }
+    .brand-mark { background:linear-gradient(135deg,#ffdc75,#b6841c); color:#211a07; border-radius:13px; width:45px; height:45px; display:grid; place-items:center; font-size:25px; box-shadow:0 4px 23px #bd861c30; }
+    .brand-name { font-size:17px; font-weight:900; line-height:1.25; }
+    .brand-sub { font-size:11px; letter-spacing:2px; font-weight:750; color:var(--gold); direction:ltr; text-align:right; }
+    .nav { display:flex; align-items:center; gap:10px; }
+    .nav a { padding:9px 14px; border-radius:10px; color:#d6d3c9; font-size:13px; }
+    .nav a:hover { background:#282620; }
+    .nav .gold-link { color:#16130c; background:var(--gold); font-weight:850; }
+    .hero { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr); gap:30px; padding:72px 0 38px; align-items:center; }
+    .eyebrow { color:var(--gold); letter-spacing:.6px; font-size:12px; font-weight:850; }
+    h1 { font-size:clamp(34px,5vw,65px); margin:12px 0 14px; line-height:1.25; letter-spacing:-.8px; }
+    h1 span { color:var(--gold); }
+    .lead { max-width:580px; font-size:16px; color:#c9c5bc; line-height:2; margin-bottom:22px; }
+    .hero-tags { display:flex; gap:9px; flex-wrap:wrap; }
+    .tag { background:#26241e; border:1px solid #3e3827; color:#e6d8b4; padding:8px 12px; border-radius:999px; font-size:12px; }
+    .hero-art { border:1px solid #49402a; border-radius:28px; min-height:250px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:28px; overflow:hidden; background:radial-gradient(circle at 50% 65%,#675125 0%,#2a241a 40%,#131314 75%); position:relative; }
+    .hero-art:after { content:""; height:1px; width:90%; position:absolute; bottom:38px; background:linear-gradient(to left,transparent,var(--gold),transparent); }
+    .hero-art svg { width:100%; height:auto; max-width:370px; filter:drop-shadow(0 16px 9px #0009); }
+    .hero-art small { color:#edd28b; letter-spacing:4px; font-size:11px; margin-top:6px; }
+    main { padding-bottom:85px; }
+    .two-col { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(275px,.75fr); gap:22px; align-items:start; }
+    .card { border:1px solid #39352b; background:linear-gradient(140deg,#1b1b1c,#151516); padding:28px; border-radius:22px; box-shadow:0 12px 40px #0002; }
+    .card h2 { font-size:24px; margin:0 0 8px; }
+    .sub { color:var(--muted); font-size:13px; line-height:1.9; margin:0 0 22px; }
+    .tabs { display:flex; gap:8px; padding:5px; border:1px solid #39352b; border-radius:13px; background:#0e0e0f; margin-bottom:22px; }
+    .tab { flex:1; border:0; background:transparent; color:#aaa8a3; border-radius:9px; padding:12px; cursor:pointer; font-weight:800; }
+    .tab[aria-selected="true"] { color:#201a0b; background:linear-gradient(120deg,#ffdf82,#e4b33b); }
+    .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+    label { display:block; font-size:13px; font-weight:750; color:#eae6da; margin-bottom:7px; }
+    .field { min-width:0; }
+    input,select,textarea { width:100%; border:1px solid #4b4535; border-radius:11px; background:#0e0f10; color:var(--text); min-height:47px; padding:10px 12px; color-scheme:dark; outline:none; }
+    input:focus,select:focus,textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px #eac14b24; }
+    textarea { resize:vertical; min-height:86px; }
+    ::placeholder { color:#85817a; }
+    .wide { grid-column:1/-1; }
+    .note { color:#c9bb92; background:#2a2417; border:1px solid #62502e; border-radius:11px; padding:12px 14px; font-size:12px; line-height:1.85; }
+    .submit { display:inline-flex; align-items:center; justify-content:center; gap:9px; background:linear-gradient(115deg,#ffdc7a,#dcb03b); color:#201902; border:none; border-radius:12px; min-height:50px; padding:12px 19px; font-size:15px; font-weight:900; cursor:pointer; width:100%; transition:transform .15s; }
+    .submit:hover { transform:translateY(-1px); }
+    .submit:active { transform:translateY(0); }
+    .minor { font-size:11px; color:#a9a49a; line-height:1.8; }
+    .details { display:grid; gap:16px; }
+    .detail-title { color:var(--gold); font-size:14px; font-weight:900; }
+    .detail-text { margin:4px 0 0; color:#e6dfd1; line-height:1.9; font-size:13px; }
+    .line { height:1px; background:#383329; }
+    .tel-link { display:block; text-align:center; background:#2a271f; border:1px solid #51452a; border-radius:10px; padding:12px; font-weight:800; color:var(--gold); }
+    .plan-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .plan { border:1px solid #494135; padding:16px; border-radius:14px; background:#181716; text-align:right; cursor:pointer; transition:.15s; color:inherit; }
+    .plan.active { background:#2d2617; border-color:var(--gold); box-shadow:inset 0 0 0 1px #d8ae49; }
+    .plan strong { display:block; font-size:17px; margin-bottom:4px; }
+    .plan span { color:#bfb8aa; font-size:12px; }
+    .price { font-size:28px; color:var(--gold); font-weight:900; margin:5px 0 0; }
+    .price span { color:var(--gold); }
+    .price small { font-size:12px; color:#d9cda9; font-weight:600; }
+    ul.terms { padding-right:19px; color:#d4cfc2; font-size:12px; line-height:2.1; margin:12px 0 0; }
+    .foot { border-top:1px solid #302d24; color:#aaa396; padding:24px 0; font-size:12px; text-align:center; }
+    [hidden] { display:none!important; }
+    @media(max-width:780px) { .hero { grid-template-columns:1fr; padding-top:34px; gap:20px; } .hero-art { min-height:220px; } .two-col { grid-template-columns:1fr; } .nav a:not(.gold-link) { display:none; } }
+    @media(max-width:510px) { .shell { width:min(100% - 28px,1140px); } .brand-name { font-size:14px; } .brand-mark { width:39px; height:39px; font-size:22px; } .nav a { padding:8px; } .card { padding:18px; border-radius:17px; } .form-grid,.plan-grid { grid-template-columns:1fr; } .hero h1 { font-size:37px; } .tab { padding:10px 7px; font-size:13px; } }
+  </style>
+</head>
+<body>
+<header><div class="shell header-row">
+  <a class="brand" href="#top" aria-label="الصفحة الرئيسية"><div class="brand-mark">♛</div><div><div class="brand-name">غسل وحمامكو الملكي</div><div class="brand-sub">ROYAL CAR WASH</div></div></a>
+  <nav class="nav"><a href="#booking">الحجز</a><a href="#booking" id="go-members">العضويات</a><a class="gold-link" href="https://maps.app.goo.gl/i64efsJ1cZ9uu9Us8" target="_blank" rel="noopener noreferrer">الاتجاهات ↗</a></nav>
+</div></header>
+<main id="top" class="shell">
+  <section class="hero">
+    <div><div class="eyebrow">♛ ROYAL CAR WASH — KIRKUK</div>
+      <h1>سيارتك تستحق<br><span>عناية ملكية.</span></h1>
+      <p class="lead">اختر الخدمة ونوع سيارتك والوقت اللي يناسبك، وبضغطة وحدة أرسل طلب الحجز للملكي على واتساب. وتگدر أيضاً تستفسر عن عضويات الغسل الشهرية.</p>
+      <div class="hero-tags"><span class="tag">⏱ يومياً 8 صباحاً – 8 مساءً</span><span class="tag">📍 كركوك – شارع المحافظة القديم</span><span class="tag">✓ تأكيد الحجز عبر واتساب</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 430 210" role="img"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d77d"/><stop offset="1" stop-color="#9b741e"/></linearGradient></defs>
+      <path d="M58 131 L91 122 L128 77 Q141 62 166 61 L289 61 Q312 61 323 77 L359 120 L388 128 Q401 132 400 145 L400 164 L33 164 L33 143 Q34 135 58 131 Z" fill="#141515" stroke="url(#g)" stroke-width="4" />
+      <path d="M138 78 L174 76 L288 76 Q303 76 309 87 L333 120 L103 120 Z" fill="#313b3b" stroke="#c5aa57" stroke-width="3"/><path d="M204 77 L196 119" stroke="#c5aa57" stroke-width="3"/><path d="M45 146 L91 145 M343 145 L390 146" stroke="#f4d478" stroke-width="5"/><circle cx="112" cy="161" r="29" fill="#080808" stroke="#a78127" stroke-width="6"/><circle cx="321" cy="161" r="29" fill="#080808" stroke="#a78127" stroke-width="6"/><circle cx="112" cy="161" r="13" fill="#adadab"/><circle cx="321" cy="161" r="13" fill="#adadab"/><path d="M83 49 C77 37 91 30 83 17 M210 41 C204 29 218 23 209 11 M354 51 C348 36 362 30 354 17" fill="none" stroke="#debd64" stroke-width="3" opacity=".7"/></svg>
+      <small>ROYAL • DETAILING • CARE</small>
+    </div>
+  </section>
+  <section id="booking" class="two-col">
+    <div class="card">
+      <div class="tabs" role="tablist" aria-label="نوع الطلب"><button id="tab-book" class="tab" aria-selected="true" role="tab" type="button">🚘 حجز غسلة</button><button id="tab-member" class="tab" aria-selected="false" role="tab" type="button">♛ طلب عضوية</button></div>
+      <section id="panel-book" role="tabpanel" aria-labelledby="tab-book">
+        <h2>احجز موعدك</h2><p class="sub">عبّي البيانات، ثم اضغط «إرسال طلب الحجز». راح يفتح واتساب برسالة جاهزة. الموعد يصير مؤكداً فقط بعد رد المغسلة.</p>
+        <form id="booking-form" class="form-grid">
+          <div class="field"><label for="customer">اسم الزبون *</label><input id="customer" name="customer" placeholder="الاسم الكريم" autocomplete="name" required maxlength="70"/></div>
+          <div class="field"><label for="phone">رقم الهاتف *</label><input id="phone" name="phone" placeholder="07XXXXXXXXX" inputmode="tel" autocomplete="tel" required pattern="[+0-9\s()\-]{10,18}" maxlength="18" title="أدخل رقم هاتف صحيح"/></div>
+          <div class="field"><label for="car">نوع السيارة *</label><select id="car" required><option value="" selected disabled>اختر حجم السيارة</option><option>صغيرة / سيدان</option><option>متوسطة / كروس أوفر</option><option>كبيرة / SUV</option></select></div>
+          <div class="field"><label for="service">الخدمة المطلوبة *</label><select id="service" required><option value="" disabled selected>اختر الخدمة</option><option value="full">غسل داخلي وخارجي</option><option value="outside">غسل خارجي</option><option value="inside">تنظيف داخلي</option><option value="engine">تنظيف المحرك</option><option value="vip">غسل VIP</option><option value="polish">تلميع السيارة</option></select></div>
+          <div class="field"><label for="date">يوم الحجز *</label><input id="date" type="date" required/></div>
+          <div class="field"><label for="time">الوقت المفضل *</label><select id="time" required><option value="">اختر اليوم والخدمة أولاً</option></select></div>
+          <div class="field wide"><label for="extra">ملاحظات (اختياري)</label><textarea id="extra" maxlength="300" placeholder="موديل السيارة، تفاصيل إضافية، أو وقت بديل ..."></textarea></div>
+          <div class="wide note">⚠️ الأوقات المعروضة أوقات *لطلب* الحجز وليست مواعيد متاحة مؤكدة. تحديد السعر والمدة وتأكيد الموعد يتم من إدارة المغسلة على واتساب.</div>
+          <div class="wide"><button class="submit" type="submit">إرسال طلب الحجز عبر واتساب ←</button><p class="minor">لا نحتفظ ببياناتك في هذا النموذج؛ التفاصيل تنتقل إلى واتساب عند الإرسال.</p></div>
+        </form>
+      </section>
+      <section id="panel-member" role="tabpanel" aria-labelledby="tab-member" hidden>
+        <h2>عضويات ROYAL الشهرية</h2><p class="sub">أسعار تأسيسية مقترحة، محسوبة على أساس تسعيرات غسل افتراضية. غير معتمدة حتى تأكيد الأسعار وتكاليف التشغيل.</p>
+        <form id="member-form" class="form-grid">
+          <div class="field wide"><label for="member-car">فئة السيارة</label><select id="member-car"><option value="small">صغيرة / سيدان</option><option value="mid">متوسطة / كروس أوفر</option><option value="big">كبيرة / SUV</option></select></div>
+          <div class="wide plan-grid">
+            <button type="button" class="plan active" data-plan="silver" aria-pressed="true"><strong>🥈 ROYAL SILVER</strong><span>غسلتان داخلي وخارجي / 30 يوم</span><div class="price"><span id="silver-price">28,500</span> <small>د.ع</small></div><span>خصم 5% من سعر الغسلتين</span></button>
+            <button type="button" class="plan" data-plan="gold" aria-pressed="false"><strong>👑 ROYAL GOLD</strong><span>4 غسلات داخلي وخارجي / 30 يوم</span><div class="price"><span id="gold-price">54,000</span> <small>د.ع</small></div><span>خصم 10% من سعر 4 غسلات</span></button>
+          </div>
+          <div class="field"><label for="member-name">الاسم *</label><input id="member-name" autocomplete="name" required maxlength="70" placeholder="اسم الزبون"/></div>
+          <div class="field"><label for="member-phone">رقم الهاتف *</label><input id="member-phone" autocomplete="tel" inputmode="tel" required pattern="[+0-9\s()\-]{10,18}" maxlength="18" placeholder="07XXXXXXXXX"/></div>
+          <div class="field wide"><label for="plate">رقم السيارة أو وصفها (اختياري)</label><input id="plate" maxlength="70" placeholder="حتى نربط العضوية بسيارة واحدة"/></div>
+          <div class="wide note">شروط مقترحة: العضوية لسيارة واحدة، صالحة 30 يوماً من التفعيل، الغسلات غير المستخدمة لا تُرحّل، لا تجمع مع العروض الأخرى. يلزم حجز موعد وتأكيد الإدارة. لا يُخصم رصيد غسلة إلا عند تقديم الخدمة، وأي استرداد يخضع لشروط يتم اعتمادها وإعلانها قبل الدفع.</div>
+          <div class="wide"><button class="submit" type="submit">استفسر واطلب العضوية عبر واتساب ←</button><p class="minor">الأسعار استرشادية وليست مطالبة بالدفع؛ الاشتراك يُفعّل بعد تأكيد الإدارة.</p></div>
+        </form>
+      </section>
+    </div>
+    <aside class="card details">
+      <h2>تفاصيل الملكي 👑</h2>
+      <div><div class="detail-title">⏱ ساعات العمل</div><p class="detail-text">يومياً من الساعة 8:00 صباحاً إلى 8:00 مساءً.</p></div><div class="line"></div>
+      <div><div class="detail-title">📍 العنوان</div><p class="detail-text">كركوك – شارع المحافظة القديم – فرع فندق ديوان.</p><a class="tel-link" href="https://maps.app.goo.gl/i64efsJ1cZ9uu9Us8" target="_blank" rel="noopener noreferrer">افتح الاتجاهات على خرائط Google ↗</a></div><div class="line"></div>
+      <div><div class="detail-title">📞 التواصل</div><p class="detail-text">07776486142</p><a class="tel-link" href="tel:+9647776486142">اتصل بالمغسلة</a></div>
+      <div><a class="submit" href="https://wa.me/9647776486142" target="_blank" rel="noopener noreferrer">محادثة واتساب مباشرة ↗</a></div>
+      <p class="minor">ملاحظة للإدارة: هذا نموذج طلبات عبر واتساب ولا يحتوي على تقويم مواعيد مشترك أو منع للحجز المزدوج. يجب تأكيد كل حجز يدوياً.</p>
+    </aside>
+  </section>
+</main>
+<footer class="foot"><div class="shell">© <span id="year"></span> غسل وحمامكو الملكي — ROYAL CAR WASH · كركوك</div></footer>
+<script>
+(function(){
+  'use strict';
+  const WHATSAPP='9647776486142';
+  const $=id=>document.getElementById(id);
+  const tabs={book:$('tab-book'),member:$('tab-member')};
+  function activate(tab){
+    for(const key of ['book','member']){
+      const enabled=key===tab;
+      tabs[key].setAttribute('aria-selected',String(enabled));
+      $('panel-'+key).hidden=!enabled;
+    }
+  }
+  tabs.book.addEventListener('click',()=>activate('book'));
+  tabs.member.addEventListener('click',()=>activate('member'));
+  $('go-members').addEventListener('click',()=>activate('member'));
+  $('year').textContent=new Date().getFullYear();
+  function pad(n){return String(n).padStart(2,'0')}
+  function localIso(d){return [d.getFullYear(),pad(d.getMonth()+1),pad(d.getDate())].join('-')}
+  function daysFromNow(n){const d=new Date(); d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return localIso(d)}
+  const today=daysFromNow(0);
+  $('date').min=today; $('date').max=daysFromNow(30);
+  const currentTime=new Date();
+  $('date').value=(currentTime.getHours()*60+currentTime.getMinutes()>=1110)?daysFromNow(1):today;
+  // Estimated service times: used for selecting preferred times only; not guaranteed time slots.
+  const services={full:{name:'غسل داخلي وخارجي',minutes:60},outside:{name:'غسل خارجي',minutes:45},inside:{name:'تنظيف داخلي',minutes:60},engine:{name:'تنظيف المحرك',minutes:60},vip:{name:'غسل VIP',minutes:90},polish:{name:'تلميع السيارة',minutes:120}};
+  function updateTimes(){
+    const service=services[$('service').value];
+    const el=$('time'); const prev=el.value;
+    el.replaceChildren();
+    const blank=document.createElement('option'); blank.value=''; blank.textContent=service?'اختر الوقت المفضل':'اختر الخدمة أولاً'; el.append(blank);
+    if(!service)return;
+    const now=new Date();
+    const chosen=$('date').value;
+    // Reject times that would end after 20:00, and past times if chosen date is today.
+    for(let minute=480;minute+service.minutes<=1200;minute+=30){
+      if(chosen===localIso(now) && minute<=now.getHours()*60+now.getMinutes())continue;
+      const value=pad(Math.floor(minute/60))+':'+pad(minute%60);
+      const hour=minute/60;
+      const period=hour<12?'ص':'م';
+      const twelve=(Math.floor(hour)%12)||12;
+      const option=document.createElement('option');option.value=value;option.textContent=`${twelve}:${pad(minute%60)} ${period}`;el.append(option);
+    }
+    if([...el.options].some(o=>o.value===prev))el.value=prev;
+    if(el.options.length===1)blank.textContent='لا توجد أوقات متبقية — اختر يوماً آخر';
+  }
+  $('service').addEventListener('change',updateTimes);
+  $('date').addEventListener('change',updateTimes);
+  function openWhatsapp(text){
+    const link='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(text);
+    // Direct navigation works reliably in mobile browsers even when pop-ups are blocked.
+    window.location.assign(link);
+  }
+  $('booking-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!e.currentTarget.reportValidity())return;
+    const date=$('date').value;
+    if(date<daysFromNow(0)||date>daysFromNow(30)){alert('اختر موعداً خلال الثلاثين يوماً القادمة.');return;}
+    const service=services[$('service').value];
+    if(!service||!$('time').value){alert('حدد الخدمة والوقت المطلوب.');return;}
+    // Re-validate selected time on submission in case the form was left open.
+    const mins=Number($('time').value.slice(0,2))*60+Number($('time').value.slice(3,5));
+    if(mins<480||mins+service.minutes>1200){alert('وقت الحجز خارج أوقات العمل.');return;}
+    const now=new Date();
+    if(date===localIso(now)&&mins<=now.getHours()*60+now.getMinutes()){updateTimes();alert('هذا الوقت مضى، اختر وقتاً آخر.');return;}
+    const note=$('extra').value.trim()||'لا توجد';
+    openWhatsapp(`👑 طلب حجز جديد — غسل وحمامكو الملكي ROYAL\n\nالاسم: ${$('customer').value.trim()}\nرقم الهاتف: ${$('phone').value.trim()}\nنوع السيارة: ${$('car').value}\nالخدمة: ${service.name}\nاليوم المطلوب: ${date}\nالوقت المفضل: ${$('time').selectedOptions[0].textContent} (${ $('time').value})\nملاحظات: ${note}\n\nأرجو تأكيد توفر الموعد والسعر النهائي. شكراً.`);
+  });
+  // Provisional baseline prices; must be approved by the business before publishing to customers.
+  const base={small:15000,mid:17000,big:25000};
+  const labels={small:'صغيرة / سيدان',mid:'متوسطة / كروس أوفر',big:'كبيرة / SUV'};
+  let selectedPlan='silver';
+  function planPrice(plan,car){return Math.round(base[car]*(plan==='silver'?2*0.95:4*0.90)/100)*100}
+  function updatePlans(){
+    const car=$('member-car').value;
+    $('silver-price').textContent=planPrice('silver',car).toLocaleString('en-US');
+    $('gold-price').textContent=planPrice('gold',car).toLocaleString('en-US');
+    document.querySelectorAll('.plan').forEach(el=>{const active=el.dataset.plan===selectedPlan;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});
+  }
+  $('member-car').addEventListener('change',updatePlans);
+  document.querySelectorAll('.plan').forEach(el=>el.addEventListener('click',()=>{selectedPlan=el.dataset.plan;updatePlans();}));
+  $('member-form').addEventListener('submit',e=>{
+    e.preventDefault();if(!e.currentTarget.reportValidity())return;
+    const car=$('member-car').value;
+    const name=selectedPlan==='silver'?'ROYAL SILVER (غسلتان)':'ROYAL GOLD (4 غسلات)';
+    const price=planPrice(selectedPlan,car).toLocaleString('en-US');
+    openWhatsapp(`👑 استفسار وطلب عضوية — غسل وحمامكو الملكي ROYAL\n\nالاسم: ${$('member-name').value.trim()}\nرقم الهاتف: ${$('member-phone').value.trim()}\nالباقة المطلوبة: ${name}\nفئة السيارة: ${labels[car]}\nالسيارة/اللوحة: ${$('plate').value.trim()||'لم تُحدد'}\nالسعر المقترح المعروض: ${price} دينار عراقي\n\nأرجو تأكيد السعر النهائي وشروط العضوية والتوفر قبل التفعيل.`);
+  });
+  updatePlans();updateTimes();
+})();
+</script>
+</body>
+</html>
