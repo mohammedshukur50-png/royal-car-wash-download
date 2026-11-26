@@ -115,18 +115,18 @@
         </form>
       </section>
       <section id="panel-member" role="tabpanel" aria-labelledby="tab-member" hidden>
-        <h2>عضويات ROYAL الشهرية</h2><p class="sub">أسعار تأسيسية مقترحة، محسوبة على أساس تسعيرات غسل افتراضية. غير معتمدة حتى تأكيد الأسعار وتكاليف التشغيل.</p>
+        <h2>عضويات ROYAL الشهرية</h2><p class="sub">اختر فئة سيارتك والعضوية الشهرية المناسبة، ثم أرسل طلبك عبر واتساب لتأكيد الاشتراك.</p>
         <form id="member-form" class="form-grid">
           <div class="field wide"><label for="member-car">فئة السيارة</label><select id="member-car"><option value="small">صغيرة / سيدان</option><option value="mid">متوسطة / كروس أوفر</option><option value="big">كبيرة / SUV</option></select></div>
-          <div class="wide plan-grid">
-            <button type="button" class="plan active" data-plan="silver" aria-pressed="true"><strong>🥈 ROYAL SILVER</strong><span>غسلتان داخلي وخارجي / 30 يوم</span><div class="price"><span id="silver-price">28,500</span> <small>د.ع</small></div><span>خصم 5% من سعر الغسلتين</span></button>
-            <button type="button" class="plan" data-plan="gold" aria-pressed="false"><strong>👑 ROYAL GOLD</strong><span>4 غسلات داخلي وخارجي / 30 يوم</span><div class="price"><span id="gold-price">54,000</span> <small>د.ع</small></div><span>خصم 10% من سعر 4 غسلات</span></button>
+          <div id="price-status" class="wide minor" role="status">الأسعار الأساسية</div><div class="wide plan-grid">
+            <button type="button" class="plan active" data-plan="silver" aria-pressed="true"><strong>🥈 ROYAL SILVER</strong><span id="silver-description">3 غسلات داخلي وخارجي / 30 يوم</span><div class="price"><span id="silver-price">25,000</span> <small>د.ع</small></div><span>اشتراك شهري</span></button>
+            <button type="button" class="plan" data-plan="gold" aria-pressed="false"><strong>👑 ROYAL GOLD</strong><span id="gold-description">3 غسلات داخلي وخارجي / 30 يوم</span><div class="price"><span id="gold-price">50,000</span> <small>د.ع</small></div><span>اشتراك شهري</span></button>
           </div>
           <div class="field"><label for="member-name">الاسم *</label><input id="member-name" autocomplete="name" required maxlength="70" placeholder="اسم الزبون"/></div>
           <div class="field"><label for="member-phone">رقم الهاتف *</label><input id="member-phone" autocomplete="tel" inputmode="tel" required pattern="[+0-9\s()\-]{10,18}" maxlength="18" placeholder="07XXXXXXXXX"/></div>
           <div class="field wide"><label for="plate">رقم السيارة أو وصفها (اختياري)</label><input id="plate" maxlength="70" placeholder="حتى نربط العضوية بسيارة واحدة"/></div>
-          <div class="wide note">شروط مقترحة: العضوية لسيارة واحدة، صالحة 30 يوماً من التفعيل، الغسلات غير المستخدمة لا تُرحّل، لا تجمع مع العروض الأخرى. يلزم حجز موعد وتأكيد الإدارة. لا يُخصم رصيد غسلة إلا عند تقديم الخدمة، وأي استرداد يخضع لشروط يتم اعتمادها وإعلانها قبل الدفع.</div>
-          <div class="wide"><button class="submit" type="submit">استفسر واطلب العضوية عبر واتساب ←</button><p class="minor">الأسعار استرشادية وليست مطالبة بالدفع؛ الاشتراك يُفعّل بعد تأكيد الإدارة.</p></div>
+          <div class="wide note">شروط مقترحة: العضوية لسيارة واحدة، صالحة للمدة الموضحة في الباقة من تاريخ التفعيل، الغسلات غير المستخدمة لا تُرحّل، لا تجمع مع العروض الأخرى. يلزم حجز موعد وتأكيد الإدارة. لا يُخصم رصيد غسلة إلا عند تقديم الخدمة، وأي استرداد يخضع لشروط يتم اعتمادها وإعلانها قبل الدفع.</div>
+          <div class="wide"><button id="member-submit" class="submit" type="submit" disabled>استفسر واطلب العضوية عبر واتساب ←</button><p class="minor">الاشتراك يُفعّل بعد تأكيد الإدارة؛ إرسال الطلب لا يُعدّ دفعاً.</p></div>
         </form>
       </section>
     </div>
@@ -141,6 +141,7 @@
   </section>
 </main>
 <footer class="foot"><div class="shell">© <span id="year"></span> غسل وحمامكو الملكي — ROYAL CAR WASH · كركوك</div></footer>
+<script src="./config.js"></script>
 <script>
 (function(){
   'use strict';
@@ -148,6 +149,7 @@
   const $=id=>document.getElementById(id);
   const tabs={book:$('tab-book'),member:$('tab-member')};
   function activate(tab){
+    if(tab==='member') refreshPrices();
     for(const key of ['book','member']){
       const enabled=key===tab;
       tabs[key].setAttribute('aria-selected',String(enabled));
@@ -209,27 +211,53 @@
     const note=$('extra').value.trim()||'لا توجد';
     openWhatsapp(`👑 طلب حجز جديد — غسل وحمامكو الملكي ROYAL\n\nالاسم: ${$('customer').value.trim()}\nرقم الهاتف: ${$('phone').value.trim()}\nنوع السيارة: ${$('car').value}\nالخدمة: ${service.name}\nاليوم المطلوب: ${date}\nالوقت المفضل: ${$('time').selectedOptions[0].textContent} (${ $('time').value})\nملاحظات: ${note}\n\nأرجو تأكيد توفر الموعد والسعر النهائي. شكراً.`);
   });
-  // Provisional baseline prices; must be approved by the business before publishing to customers.
-  const base={small:15000,mid:17000,big:25000};
+  const cfg=window.ROYAL_CONFIG||{};
+  const cloud=Boolean(cfg.url && cfg.key);
+  let data={silver_small:25000,silver_mid:32300,silver_big:45000,gold_small:50000,gold_mid:65000,gold_big:75000,silver_washes:3,gold_washes:3,silver_days:30,gold_days:30};
+  let pending=null;
+  async function refreshPrices(){
+    if(!cloud){$('price-status').textContent='لم يتم تحميل إعدادات الاتصال. يرجى إعادة فتح الصفحة أو التواصل مع المغسلة.';$('member-submit').disabled=true;return false;}
+    if(pending)return pending;
+    pending=(async()=>{
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),10000);
+      try{
+        const r=await fetch(cfg.url.replace(/\/$/,'')+'/rest/v1/royal_prices?id=eq.1&select=*',{headers:{apikey:cfg.key},cache:'no-store',signal:controller.signal});
+        if(!r.ok)throw Error('price request failed');
+        const rows=await r.json(); const next=rows[0];
+        if(!next||!Object.keys(data).every(k=>Number.isInteger(next[k])&&next[k]>0))throw Error('invalid price data');
+        data=Object.fromEntries(Object.keys(data).map(k=>[k,next[k]]));
+        updatePlans();$('price-status').textContent='تم التحقق من الأسعار الحالية';$('member-submit').disabled=false;return true;
+      }catch(e){$('price-status').textContent='تعذر التحقق من الأسعار — الأرقام الظاهرة قديمة. اتصل بالمغسلة أو أعد فتح العضويات.';$('member-submit').disabled=true;return false;}finally{clearTimeout(timeout);}
+    })();
+    try{return await pending;}finally{pending=null;}
+  }
   const labels={small:'صغيرة / سيدان',mid:'متوسطة / كروس أوفر',big:'كبيرة / SUV'};
   let selectedPlan='silver';
-  function planPrice(plan,car){return Math.round(base[car]*(plan==='silver'?2*0.95:4*0.90)/100)*100}
+  function planPrice(plan,car){return data[plan+'_'+car]}
   function updatePlans(){
     const car=$('member-car').value;
+    for(const plan of ['silver','gold']) $(plan+'-description').textContent=`${data[plan+'_washes']} غسلات داخلي وخارجي / ${data[plan+'_days']} يوم`;
     $('silver-price').textContent=planPrice('silver',car).toLocaleString('en-US');
     $('gold-price').textContent=planPrice('gold',car).toLocaleString('en-US');
     document.querySelectorAll('.plan').forEach(el=>{const active=el.dataset.plan===selectedPlan;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});
   }
   $('member-car').addEventListener('change',updatePlans);
   document.querySelectorAll('.plan').forEach(el=>el.addEventListener('click',()=>{selectedPlan=el.dataset.plan;updatePlans();}));
-  $('member-form').addEventListener('submit',e=>{
+  $('member-form').addEventListener('submit',async e=>{
     e.preventDefault();if(!e.currentTarget.reportValidity())return;
     const car=$('member-car').value;
-    const name=selectedPlan==='silver'?'ROYAL SILVER (غسلتان)':'ROYAL GOLD (4 غسلات)';
+    const plan=selectedPlan; const before=JSON.stringify(data);
+    if(!await refreshPrices())return;
+    if(before!==JSON.stringify(data)){alert('تحدثت الأسعار أو شروط العضوية. راجعها ثم أرسل الطلب مرة أخرى.');return;}
+    if(plan!==selectedPlan||car!==$('member-car').value)return;
+    const name=`ROYAL ${plan.toUpperCase()} (${data[plan+'_washes']} غسلات / ${data[plan+'_days']} يوم)`;
     const price=planPrice(selectedPlan,car).toLocaleString('en-US');
-    openWhatsapp(`👑 استفسار وطلب عضوية — غسل وحمامكو الملكي ROYAL\n\nالاسم: ${$('member-name').value.trim()}\nرقم الهاتف: ${$('member-phone').value.trim()}\nالباقة المطلوبة: ${name}\nفئة السيارة: ${labels[car]}\nالسيارة/اللوحة: ${$('plate').value.trim()||'لم تُحدد'}\nالسعر المقترح المعروض: ${price} دينار عراقي\n\nأرجو تأكيد السعر النهائي وشروط العضوية والتوفر قبل التفعيل.`);
+    openWhatsapp(`👑 استفسار وطلب عضوية — غسل وحمامكو الملكي ROYAL\n\nالاسم: ${$('member-name').value.trim()}\nرقم الهاتف: ${$('member-phone').value.trim()}\nالباقة المطلوبة: ${name}\nفئة السيارة: ${labels[car]}\nالسيارة/اللوحة: ${$('plate').value.trim()||'لم تُحدد'}\nسعر العضوية: ${price} دينار عراقي\n\nأرجو تأكيد الطلب وشروط العضوية والتوفر قبل التفعيل.`);
   });
-  updatePlans();updateTimes();
+
+  updatePlans();updateTimes();refreshPrices();
+  if(cloud){setInterval(()=>{if(!document.hidden)refreshPrices();},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshPrices();});}
 })();
 </script>
 </body>
